@@ -20,6 +20,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import type { CivicDocument, DocumentType, BoardName } from "@/types";
+import { discoverLaserficheDocs } from "./laserfiche-scraper";
 
 const BASE_URL = "https://www.schertz.com";
 const GOV_URL = `${BASE_URL}/27/Government`;
@@ -103,6 +104,16 @@ export async function discoverDocuments(): Promise<DiscoveredDocument[]> {
     console.log(`  ✓ Public Notices: ${notices.length} found`);
   } catch (err) {
     console.warn(`  ⚠ Public Notices: ${(err as Error).message}`);
+  }
+
+  // 4. Discover Laserfiche public records archive
+  try {
+    console.log("  Crawling Laserfiche public records archive...");
+    const lfDocs = await discoverLaserficheDocs();
+    discovered.push(...lfDocs);
+    console.log(`  ✓ Laserfiche: ${lfDocs.length} documents found`);
+  } catch (err) {
+    console.warn(`  ⚠ Laserfiche: ${(err as Error).message}`);
   }
 
   console.log(`\n📋 Total documents discovered: ${discovered.length}`);

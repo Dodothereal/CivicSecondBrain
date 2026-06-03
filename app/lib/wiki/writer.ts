@@ -21,7 +21,7 @@ export function writeWikiPage(page: WikiPage): void {
     `category: ${page.category}`,
     `sources:`,
     ...(page.sources ?? []).map((s) => `  - ${s}`),
-    `last_updated: ${page.lastUpdated}`,
+    `last_updated: "${page.lastUpdated}"`,
     "---",
     "",
   ].join("\n");
@@ -44,7 +44,7 @@ export function appendToWikiPage(
 
   // Update last_updated in frontmatter
   const updated = raw
-    .replace(/^last_updated: .+$/m, `last_updated: ${updatedDate}`)
+    .replace(/^last_updated: .+$/m, `last_updated: "${updatedDate}"`)
     .trimEnd();
 
   const appendBlock = `\n\n### ${sectionHeading}\n\n${content}`;
