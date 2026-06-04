@@ -475,3 +475,9 @@
 **Manifest:** ./raw-sources/manifest.json
 **Top themes:** Initial bootstrap of Schertz, TX civic document corpus
 **Data source:** https://www.schertz.com/27/Government
+
+## [2026-06-04] QUERY | Summarize the most recent city council meeting
+**Question:** Summarize the most recent city council meeting
+**Wiki pages read:** topics/governance.md, topics/financial-report.md, topics/public-safety.md, topics/infrastructure.md, topics/development.md, topics/strategic-plan.md, topics/budget.md, topics/ordinances.md
+**Filed:** not filed
+**Gap noted:** none
