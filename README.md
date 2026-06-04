@@ -182,4 +182,7 @@ See `infrastructure/` for the AWS CDK stack.
 
 ## License
 
-[MIT](LICENSE) — free to use, fork, and adapt for any city or civic purpose.
+Copyright (c) 2024 Jose Leos. All rights reserved.
+
+This software is proprietary and confidential. Unauthorized use, copying,
+distribution, or modification is strictly prohibited. See [LICENSE](LICENSE) for details.
