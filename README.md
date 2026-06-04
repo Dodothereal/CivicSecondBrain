@@ -13,9 +13,10 @@ Built on the [Karpathy LLM Wiki pattern](https://gist.github.com/karpathy/442a6b
 |---|---|
 | **Chat Q&A** | Ask anything about the city in plain English — get cited answers from real city documents |
 | **Persistent Wiki** | Claude builds and maintains a structured wiki from every ingested document |
-| **Smart Ingestion** | Automatically discovers and processes documents from schertz.com |
+| **Smart Ingestion** | Discovers and processes documents from schertz.com and Laserfiche |
 | **Proactive Recommendations** | Nightly AI analysis surfaces budget trends, strategic plan gaps, and improvement opportunities |
 | **City Health Dashboard** | At-a-glance view of civic KPIs and pending AI alerts |
+| **Wiki Browser** | Browse all ingested wiki pages at `/wiki`, grouped by category |
 
 ---
 
@@ -29,9 +30,9 @@ Raw Sources (PDFs, HTML)
 ```
 
 Three layers:
-1. **`raw-sources/`** — immutable downloaded documents
+1. **`raw-sources/`** — immutable downloaded documents; `manifest.json` tracks what has been ingested
 2. **`wiki/`** — LLM-generated, persistent markdown knowledge base
-3. **`app/`** — Next.js chat interface + API + dashboard
+3. **`app/`** — Next.js chat interface + API routes + dashboard
 
 ---
 
@@ -39,7 +40,7 @@ Three layers:
 
 ### Prerequisites
 - Node.js 18+
-- Anthropic API key (`claude-3-5-sonnet`)
+- Anthropic API key
 
 ### Setup
 
@@ -50,7 +51,7 @@ cd civic-second-brain
 npm install
 
 cp .env.example .env.local
-# Add your ANTHROPIC_API_KEY to .env.local
+# Set ANTHROPIC_API_KEY in .env.local
 
 # Bootstrap the wiki from Schertz documents
 npm run ingest:seed
@@ -67,15 +68,43 @@ Open [http://localhost:3000](http://localhost:3000)
 
 | Command | Description |
 |---|---|
-| `npm run ingest:seed` | Full seed ingestion from schertz.com (run once to bootstrap) |
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run lint` | ESLint |
+| `npm test` | Run unit tests (Vitest) |
+| `npm run ingest:seed` | Full seed ingestion from all sources (run once to bootstrap) |
 | `npm run ingest:seed -- --dry-run` | Discover documents without downloading |
-| `npm run ingest:seed -- --board council` | Ingest only city council documents |
 | `npm run ingest:seed -- --type budget` | Ingest only budget documents |
 | `npm run ingest:seed -- --limit 5` | Process first 5 documents (for testing) |
 | `npm run ingest:doc` | Ingest a single document by URL |
-| `npm run lint:wiki` | Run wiki health check + generate recommendations |
+| `npm run lint:wiki` | Run wiki health check + generate AI recommendations |
 | `npm run scrape:check` | Check for new documents without ingesting |
-| `npm run dev` | Start development server |
+
+---
+
+## Data Sources
+
+Ingestion pulls from three sources automatically:
+
+### 1. CivicPlus DocumentCenter (`schertz.com/DocumentCenter`)
+Deep crawl via the internal `Document_AjaxBinding` JSON API. Covers these folder trees:
+- Budget & Finance (budgets, CIP, fee schedules, tax rates)
+- Boards & Commissions, City Council, City Secretary
+- Government, Public Information
+- Planning, Parks & Recreation, Fire, EMS, Police
+
+### 2. Laserfiche WebLink (`laserfiche.schertzweb.com`)
+Recursive crawl of the public records archive via `FolderListingService.aspx`. Covers:
+- City Council agendas & minutes (769+ documents)
+- City Boards and Commissions agendas & minutes
+- Finance Information, Resolutions, Ordinances
+- Public Hearing and Public Notices, Public Publications
+- Election Information, Charter Review Commission
+
+### 3. Budget & Finance sub-pages
+Direct scrape of `/250` (Financial Transparency), `/249` (Debt Obligations), `/247` (City Pension), `/248` (TMRS), and `/2125` (Public Notices) for documents not surfaced by the folder crawls.
+
+> **Note:** Board agendas are sourced exclusively from Laserfiche. The `/273/Agendas-Minutes` CivicPlus page links to Laserfiche and does not serve documents directly.
 
 ---
 
@@ -83,66 +112,70 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ```
 wiki/
-├── SCHEMA.md              ← Governing document (read this first)
-├── index.md               ← Content catalog (LLM navigation layer)
-├── log.md                 ← Append-only operation history
+├── SCHEMA.md                    ← Governing document for wiki conventions
+├── index.md                     ← Content catalog used by the query engine
+├── log.md                       ← Append-only operation history
 ├── topics/
-│   ├── budget.md          ← Budget & Finance (multi-year trends)
-│   ├── ordinances.md      ← Ordinance index & amendments
-│   ├── infrastructure.md  ← Roads, utilities, parks, CIP
-│   ├── public-safety.md   ← Police, fire, courts
-│   ├── development.md     ← Zoning, permits, EDC
-│   ├── governance.md      ← Charter, boards, elections
-│   └── strategic-plan.md  ← Goals, KPIs, progress
+│   ├── budget.md                ← Budget & Finance (multi-year trends)
+│   ├── ordinances.md            ← Ordinance index & amendments
+│   ├── infrastructure.md        ← Roads, utilities, parks, CIP
+│   ├── public-safety.md         ← Police, fire, courts
+│   ├── development.md           ← Zoning, permits, EDC
+│   ├── governance.md            ← Charter, boards, elections
+│   ├── financial-report.md      ← ACFRs, audits, transparency reports
+│   └── strategic-plan.md        ← Goals, KPIs, progress
 ├── decisions/
-│   └── YYYY-MM-DD-[board].md  ← Per-meeting votes & decisions
+│   └── YYYY-MM-DD-[board].md    ← Per-meeting votes & decisions
 ├── people/
-│   ├── council-members.md ← Roster, roles, vote history
-│   └── boards.md          ← 14 advisory boards
+│   ├── council-members.md       ← Roster, roles, vote history
+│   └── boards.md                ← Advisory boards
 ├── recommendations/
-│   └── YYYY-MM-DD-[topic].md  ← AI-generated recommendations
+│   └── YYYY-MM-DD-[topic].md    ← AI-generated analysis (requires council review)
 └── queries/
-    └── [filed answers]    ← Saved Q&A for reuse
+    └── [filed answers]          ← Saved Q&A for reuse
 ```
+
+All wiki pages use YAML frontmatter (`title`, `type`, `category`, `sources`, `last_updated`) and inline `[SOURCE: filename, p.N]` citations. Financial figures always carry fiscal year context (`$4.2M FY2024`). Schertz fiscal year runs Oct 1 – Sep 30.
+
+---
+
+## App Routes
+
+| Route | Description |
+|---|---|
+| `/` | Chat Q&A interface |
+| `/wiki` | Browse all wiki pages by category |
+| `/dashboard` | City health dashboard — KPIs and AI recommendations |
+| `/admin` | Document ingestion management |
+| `POST /api/chat` | Streaming chat endpoint (plain text delta stream) |
+| `POST /api/ingest` | Trigger document ingestion |
+| `POST /api/lint` | Trigger wiki health check |
 
 ---
 
 ## Cloud Deployment (AWS)
 
-See `infrastructure/` for AWS CDK stack.
+See `infrastructure/` for the AWS CDK stack.
 
 | Component | AWS Service |
 |---|---|
 | App hosting | Amplify / ECS Fargate |
 | Auth | Cognito (MFA) |
 | Document storage | S3 (raw-sources, wiki) |
-| Semantic search | OpenSearch (k-NN) |
-| Scheduler | EventBridge + Lambda |
-| Scraper | Lambda + Playwright |
+| Semantic search | OpenSearch k-NN (replaces keyword selection at scale) |
+| Scheduler | EventBridge + Lambda (nightly LINT) |
 | Monitoring | CloudWatch |
-
-Estimated POC cost: **~$150–300/month**
-
----
-
-## Data Source
-
-All documents sourced from the City of Schertz, TX official government portal:
-**https://www.schertz.com/27/Government**
-
-Includes: City Council minutes, budgets, ordinances, City Charter,
-Strategic Plan, State of the City, and 14 advisory board agendas.
 
 ---
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **AI:** Anthropic Claude 3.5 Sonnet (`@anthropic-ai/sdk`)
-- **Streaming:** Vercel AI SDK
-- **Scraping:** Axios + Cheerio
+- **Framework:** Next.js 16 (App Router, Server Components)
+- **AI:** Anthropic Claude (`@anthropic-ai/sdk`) — Sonnet for query/lint, configurable
+- **Scraping:** Axios + Cheerio + custom CivicPlus/Laserfiche API clients
 - **PDF Parsing:** pdf-parse
 - **Styling:** Tailwind CSS
+- **Testing:** Vitest (31 unit tests — wiki reader/writer, pdf-parser)
 - **Language:** TypeScript
 
 ---
