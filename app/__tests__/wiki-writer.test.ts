@@ -167,19 +167,37 @@ describe("updateWikiIndex", () => {
     expect(raw).toContain("Budget summary");
   });
 
-  it("increments the Pages count in the header", async () => {
+  it("reflects actual row count in the Pages header", async () => {
     fs.writeFileSync(
       path.join(tmpDir, "index.md"),
-      `# Wiki Index\n> Last updated: 2024-01-01 | Pages: 3\n\n## Topics\n`,
+      `# Wiki Index\n> Last updated: 2024-01-01 | Pages: 0\n\n## Topics\n`,
       "utf-8"
     );
     const { updateWikiIndex } = await importWriter();
 
     updateWikiIndex([
-      { path: "topics/x.md", summary: "X", date: "2024-01-01", sourceCount: 1, category: "topic" },
+      { path: "topics/a.md", summary: "A", date: "2024-01-01", sourceCount: 1, category: "topic" },
+      { path: "topics/b.md", summary: "B", date: "2024-01-01", sourceCount: 1, category: "topic" },
     ]);
 
     const raw = fs.readFileSync(path.join(tmpDir, "index.md"), "utf-8");
-    expect(raw).toContain("Pages: 4");
+    expect(raw).toContain("Pages: 2");
+  });
+
+  it("skips duplicate paths on re-ingest", async () => {
+    fs.writeFileSync(
+      path.join(tmpDir, "index.md"),
+      `# Wiki Index\n> Last updated: 2024-01-01 | Pages: 0\n\n## Topics\n`,
+      "utf-8"
+    );
+    const { updateWikiIndex } = await importWriter();
+
+    updateWikiIndex([{ path: "topics/x.md", summary: "X", date: "2024-01-01", sourceCount: 1, category: "topic" }]);
+    updateWikiIndex([{ path: "topics/x.md", summary: "X", date: "2024-01-01", sourceCount: 1, category: "topic" }]);
+
+    const raw = fs.readFileSync(path.join(tmpDir, "index.md"), "utf-8");
+    const occurrences = (raw.match(/\[\[topics\/x\.md\]\]/g) ?? []).length;
+    expect(occurrences).toBe(1);
+    expect(raw).toContain("Pages: 1");
   });
 });

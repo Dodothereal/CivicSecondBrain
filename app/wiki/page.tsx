@@ -44,7 +44,12 @@ const CATEGORY_ORDER: WikiCategory[] = [
 ];
 
 export default function WikiPage() {
-  const entries = readWikiIndex();
+  const seen = new Set<string>();
+  const entries = readWikiIndex().filter((e) => {
+    if (seen.has(e.path)) return false;
+    seen.add(e.path);
+    return true;
+  });
 
   const grouped = CATEGORY_ORDER.reduce<Record<WikiCategory, WikiIndexEntry[]>>(
     (acc, cat) => {
