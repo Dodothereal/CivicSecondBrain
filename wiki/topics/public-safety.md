@@ -212,3 +212,48 @@ last_updated: "2026-06-04"
 - Total debt obligation secured by property taxes is $96,572,010 [SOURCE: Adopted Budget FY2023-24]
 - City contracts with YMCA for Recreation Center, Senior Center, and Aquatics Center programming [SOURCE: Adopted Budget FY2023-24]
 - Emergency Medical Services serves 220-230 square mile service area including multiple municipalities and counties [SOURCE: Adopted Budget FY2023-24]
+
+### From Annual Comprehensive Financial Report Current (2025-03-25)
+
+*From: Annual Comprehensive Financial Report Current (2025-03-25)*
+
+- Schertz received Certificate of Achievement for Excellence in Financial Reporting from GFOA for the 38th consecutive year [SOURCE: Annual Comprehensive Financial Report Current]
+- City maintained AA+ bond rating from Standard and Poor's [SOURCE: Annual Comprehensive Financial Report Current]
+- Population as of 2023 was 43,239, representing continued rapid growth [SOURCE: Annual Comprehensive Financial Report Current]
+- Property tax base expanding at approximately 3% per year; sales taxes growing at 7% annually [SOURCE: Annual Comprehensive Financial Report Current]
+- Unemployment rate for Schertz area was 3.8% as of September 2024, indicating full employment [SOURCE: Annual Comprehensive Financial Report Current]
+- New residential construction permit revenue more than doubled from 2023 to 2024 [SOURCE: Annual Comprehensive Financial Report Current]
+- Commercial permit revenue grew 22.4% in FY2024 [SOURCE: Annual Comprehensive Financial Report Current]
+- City operates under council-manager form of government since November 30, 1972 [SOURCE: Annual Comprehensive Financial Report Current]
+- City provides full range of services including police, fire, EMS, library, streets maintenance, and water/sewer [SOURCE: Annual Comprehensive Financial Report Current]
+- General fund unassigned balance represents 25.61% of total expenditures (excluding capital outlay), exceeding 26% policy [SOURCE: Annual Comprehensive Financial Report Current]
+
+### From Employee Compensation Report FY24 FINAL (2024-12-13)
+
+*From: Employee Compensation Report FY24 FINAL (2024-12-13)*
+
+- The City of Schertz employed hundreds of personnel across multiple departments during FY2024 [SOURCE: Employee Compensation Report FY24 FINAL]
+- City Manager Stephen Williams received the highest total compensation at $363,269.24 [SOURCE: Employee Compensation Report FY24 FINAL]
+- Fire and EMS personnel received significant overtime and deployment earnings, with some firefighters earning over $50,000 in overtime [SOURCE: Employee Compensation Report FY24 FINAL]
+- The city paid one arbitration/settlement of $30,363.00 to a separated Assistant Police Chief [SOURCE: Employee Compensation Report FY24 FINAL]
+- Employee benefits include FICA/Medicare, TMRS pension, healthcare premiums, and various incentives [SOURCE: Employee Compensation Report FY24 FINAL]
+- TIFMAS deployments for Fire Department are 100% reimbursable by the state [SOURCE: Employee Compensation Report FY24 FINAL]
+- The report covers the fiscal year from October 1, 2023 to September 30, 2024 [SOURCE: Employee Compensation Report FY24 FINAL]
+- Compensation includes base salary, overtime, additional earnings (certification pay, education pay, longevity, allowances, on-call pay, wellness, holiday pay), deployment earnings, and benefits [SOURCE: Employee Compensation Report FY24 FINAL]
+- Multiple department directors earn between $130,000-$160,000 annually [SOURCE: Employee Compensation Report FY24 FINAL]
+- The city employs both uniform (fire, police, EMS) and civilian personnel categories [SOURCE: Employee Compensation Report FY24 FINAL]
+
+### From Employee Compensation Report FY25 FINAL (2026-01-05)
+
+*From: Employee Compensation Report FY25 FINAL (2026-01-05)*
+
+- FY2025 employee compensation data includes 9 categories: annual salary, leave payout, regular earnings, overtime, additional earnings, deployment earnings, arbitration/settlements, total earnings, and additional benefits [SOURCE: Employee Compensation Report FY25 FINAL]
+- City Manager Stephen Williams is the highest-paid employee at $361,057.44 total compensation with annual salary of $281,520.20 [SOURCE: Employee Compensation Report FY25 FINAL]
+- Fire Chief Gregory Rodgers earned $314,314.16 including significant deployment earnings of $53,961.82 (100% state-reimbursable TIFMAS deployments) [SOURCE: Employee Compensation Report FY25 FINAL]
+- TIFMAS deployments for Fire and EMS personnel are 100% reimbursable by the state of Texas [SOURCE: Employee Compensation Report FY25 FINAL]
+- Additional earnings include certification pay, education pay, longevity, allowances, on-call pay, wellness, and holiday pay [SOURCE: Employee Compensation Report FY25 FINAL]
+- Fire Department personnel use 7(k) exemption under FLSA for overtime calculations [SOURCE: Employee Compensation Report FY25 FINAL]
+- Additional benefits include employer's share of FICA/Medicare, TMRS pension contributions, healthcare premiums, and other fringe benefits [SOURCE: Employee Compensation Report FY25 FINAL]
+- The report covers employment from October 1 through September 30 (fiscal year) [SOURCE: Employee Compensation Report FY25 FINAL]
+- Multiple employees received significant overtime compensation, particularly in Fire, EMS, and Police departments [SOURCE: Employee Compensation Report FY25 FINAL]
+- Employee categories are divided between Civilian and Uniform positions [SOURCE: Employee Compensation Report FY25 FINAL]

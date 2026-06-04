@@ -531,3 +531,143 @@
 **Ordinances referenced:** none
 **Dollar amounts found:** Total Budget - All Funds Expenditures: 118824547; Total Budget - All Funds Revenues: 114960769; General Fund Expenditures: 49954992; General Fund Revenues: 47390488; Property Tax Revenue: 20838000; Sales Tax Revenue: 14180000; Water & Sewer Fund Revenues: 31504800; Water & Sewer Fund Expenditures: 31241901; EMS Fund Revenues: 12860223; EMS Fund Expenditures: 13640836; Economic Development Corporation Revenues: 8407000; Total Debt Obligation Secured by Property Taxes: 96572010; Property Tax Rate Increase Impact: 2398167; Estimated Wage Adjustment from Compensation Study: 2600000; Police Camera/TASER Replacement Annual Cost: 550000; One-time Street Improvement Funding: 1000000; Debt Service Fund Revenues: 9335000; Debt Service Fund Expenditures: 11115131; General Fund Reserve Target: 12988298; Police Department Budget: 17500000; Fire Rescue Department Budget: 6000000
 **Votes recorded:** 4
+
+## [2026-06-04] INGEST | Annual Comprehensive Financial Report Current
+**Source:** https://www.schertz.com/DocumentCenter/View/8461/Annual-Comprehensive-Financial-Report-Current
+**Document type:** financial-report
+**Pages updated:** topics/budget.md, topics/ordinances.md, topics/infrastructure.md, topics/public-safety.md, topics/development.md, topics/governance.md, topics/strategic-plan.md
+**Pages created:** none
+**Key facts added:** The City of Schertz's Annual Comprehensive Financial Report for FY2024 shows strong financial performance with total assets exceeding liabilities by $373.8 million. Net position increased by $28.7 million, though less than prior year due to reduced capital contributions. General fund ended with $17.9 million fund balance (33.75% of expenditures, exceeding the 26% policy). The city maintained its AA+ bond rating and continues rapid population growth, with new residential and commercial development driving increased property and sales tax revenues.
+**Ordinances referenced:** none
+**Dollar amounts found:** Total net position at year end: 373837780; General Fund ending fund balance: 17947703; Series 2024 Certificates of Obligation: 19165000; Total long-term debt outstanding: 122484521; Property tax revenue: 27147745; Sales tax revenue: 20095955; Fire Station 4 construction commitment: 11936178; Transfer to capital project fund for infrastructure: 3000000; Employee pay increases: 1300000; Economic Development Corporation ending fund balance: 40323196; Net pension liability: 21993852; Capital assets (net): 338890205; Schertz/Seguin LGC outstanding debt: 150143684; Total OPEB liability: 3100145; Investment in Schertz/Seguin LGC joint venture: 21186897
+**Votes recorded:** 3
+
+## [2026-06-04] INGEST | TMRS-2019 Rate Letter
+**Source:** https://www.schertz.com/DocumentCenter/View/8463/TMRS-2019-Rate-Letter
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/governance.md, topics/financial-report.md
+**Pages created:** none
+**Key facts added:** This is a rate letter from the Texas Municipal Retirement System (TMRS) to the City of Schertz establishing the municipal contribution rates for Plan Year 2019 based on the December 31, 2017 actuarial valuation. The total combined contribution rate for 2019 will be 16.16%, comprised of a 16.04% retirement rate and 0.12% Supplemental Death Benefit rate. The city's funded ratio improved slightly from 73.2% to 74.7%, with an unfunded actuarial accrued liability of $16.7 million. The document also provides rate stabilization guidance and detailed actuarial analysis for the city's pension plan.
+**Ordinances referenced:** none
+**Dollar amounts found:** Total Market BAF Balance as of December 31, 2017: 50848030; Actuarial Value of Assets as of December 31, 2017: 49347226; Actuarial Accrued Liability as of December 31, 2017: 66054349; Unfunded Actuarial Accrued Liability (UAAL) as of December 31, 2017: 16707123; Municipal contributions for 2017: 2793644; Member contributions for 2017: 1232232; Interest credited on beginning BAF balance for 2017: 5619530; Benefit and refund payments for 2017: 1870815; Estimated employer contribution for PY 2019: 2991080; Projected payroll for PY 2019: 18509158; Valuation Payroll as of December 31, 2017: 17970056
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | TMRS-2020 Rate Letter
+**Source:** https://www.schertz.com/DocumentCenter/View/8464/TMRS-2020-Rate-Letter
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/governance.md, topics/financial-report.md
+**Pages created:** none
+**Key facts added:** This is a contribution rate letter from the Texas Municipal Retirement System (TMRS) to the City of Schertz establishing the municipal contribution requirements for Plan Year 2020. The letter is based on the December 31, 2018 actuarial valuation and sets the total combined contribution rate at 15.92% (15.80% retirement plus 0.12% supplemental death benefit). The city's funded ratio improved from 74.7% to 76.3%, with an unfunded actuarial accrued liability (UAAL) of $17,029,372. The report includes detailed actuarial information, rate stabilization techniques, and risk assessments for the city's pension plan.
+**Ordinances referenced:** none
+**Dollar amounts found:** Market BAF Balance as of December 31, 2018: 51734069; Actuarial Value of Assets (AVA) as of December 31, 2018: 54951959; Actuarial Accrued Liability (AAL) as of December 31, 2018: 71981331; Unfunded Actuarial Accrued Liability (UAAL) as of December 31, 2018: 17029372; Valuation Payroll for 2018: 19180232; Municipal Contributions for 2018: 3033936; Member Contributions for 2018: 1326518; Benefit and Refund Payments for 2018: 1909862; Estimated Employer Contribution for PY2020: 3145098; Projected Payroll for PY2020: 19755639
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | TMRS-2021 Rate Letter
+**Source:** https://www.schertz.com/DocumentCenter/View/8465/TMRS-2021-Rate-Letter
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/financial-report.md
+**Pages created:** none
+**Key facts added:** This letter from the Texas Municipal Retirement System (TMRS) establishes the City of Schertz's contribution rates for Plan Year 2021 based on the December 31, 2019 actuarial valuation. The city's total combined contribution rate will be 16.43% (phase-in) to 16.45% (full rate), representing an increase from the 2020 rate of 15.92%. The rate changes reflect new actuarial assumptions adopted after the 2019 experience study, including modified salary scales, updated mortality tables, and decreased payroll growth assumptions. The city has a funded ratio of 78.0% with an unfunded actuarial accrued liability (UAAL) of $17.19 million, representing 87.2% of payroll.
+**Ordinances referenced:** none
+**Dollar amounts found:** Market value of Benefit Accumulation Fund (BAF) balance as of December 31, 2019: 62007402; Actuarial Value of Assets (AVA) as of December 31, 2019: 61021465; Unfunded Actuarial Accrued Liability (UAAL) as of December 31, 2019: 17190312; Total Actuarial Accrued Liability as of December 31, 2019: 78211777; Valuation Payroll for December 31, 2019: 20301576; Municipal contributions during 2019: 3163340; Member contributions during 2019: 1380585; Interest credited on BAF balance for 2019: 7977851; Benefit and refund payments during 2019: 2248442; Estimated employer contribution for Plan Year 2021: 3427276; Estimated employer contribution for Plan Year 2020: 3145098
+**Votes recorded:** 4
+
+## [2026-06-04] INGEST | TMRS-2022 Rate Letter
+**Source:** https://www.schertz.com/DocumentCenter/View/8466/TMRS-2022-Rate-Letter
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/governance.md, topics/financial-report.md
+**Pages created:** none
+**Key facts added:** This is a TMRS (Texas Municipal Retirement System) actuarial valuation rate letter for the City of Schertz, establishing the 2022 employer contribution rates based on the December 31, 2020 actuarial valuation. The total combined contribution rate is set at 16.36%, comprising a 16.22% retirement rate and 0.14% supplemental death benefit rate. The city's funded ratio improved from 78.0% to 79.8%, with an unfunded actuarial accrued liability (UAAL) of $17,091,905. The contribution rate phase-in period is complete, making the full retirement rate the minimum required contribution.
+**Ordinances referenced:** none
+**Dollar amounts found:** Market BAF (Benefit Accumulation Fund) Balance as of 12/31/2020: 69054698; Actuarial Value of Assets (AVA) as of 12/31/2020: 67681457; Unfunded Actuarial Accrued Liability (UAAL) as of 12/31/2020: 17091905; Actuarial Accrued Liability (AAL) as of 12/31/2020: 84773362; Valuation Payroll as of 12/31/2020: 21430342; Employer contributions during 2020: 3327434; Member contributions during 2020: 1474466; Benefit and refund payments during 2020: 2374974; Interest credited on beginning BAF balance during 2020: 4620370; Estimated employer contribution for 2022: 3602419; Projected payroll for 2022: 22019676; Active members actuarial liability as of 12/31/2020: 48647579; Inactive members actuarial liability as of 12/31/2020: 9552366; Annuitants actuarial liability as of 12/31/2020: 26573417; 2013 Valuation Fresh Start UAAL base: 15797558
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | TMRS-2023 Rate Letter
+**Source:** https://www.schertz.com/DocumentCenter/View/8467/TMRS-2023-Rate-Letter
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/governance.md, topics/financial-report.md
+**Pages created:** none
+**Key facts added:** TMRS (Texas Municipal Retirement System) 2023 contribution rate letter for the City of Schertz. The document outlines the city's required pension contribution rates for 2023 based on the December 31, 2021 actuarial valuation. The combined employer contribution rate is 16.40%, consisting of a 16.18% Full Retirement Rate and 0.22% Supplemental Death Benefit rate. The city has an Unfunded Actuarial Accrued Liability (UAAL) of $17,708,189 with a funded ratio of 80.9%. The report includes detailed actuarial analysis, membership data, asset valuations, and risk assessments for the city's TMRS pension plan.
+**Ordinances referenced:** none
+**Dollar amounts found:** Unfunded Actuarial Accrued Liability (UAAL): 17708189; Actuarial Accrued Liability (AAL): 92926641; Market BAF (Benefit Accumulation Fund) Balance: 80107555; Actuarial Value of Assets (AVA): 75218452; Valuation Payroll: 23139914; Employer contributions: 3831461; Member contributions: 1643398; Benefit and refund payments: 2885387; Interest credited on beginning BAF balance: 8463386; Estimated employer contribution for 2023: 3899307; Projected payroll for 2023: 23776262
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | Employee Compensation Report FY23 FINAL
+**Source:** https://www.schertz.com/DocumentCenter/View/12918/Employee-Compensation-Report-FY23-FINAL
+**Document type:** financial-report
+**Pages updated:** topics/budget.md, topics/governance.md
+**Pages created:** none
+**Key facts added:** This is the Employee Compensation Report for Fiscal Year 2023 (FY23) for the City of Schertz, Texas. The report provides detailed compensation information for all city employees including regular earnings, overtime, additional earnings, benefits, and total compensation. The document covers the period from October 1, 2022 through September 30, 2023, and includes 437 employees across all city departments. Top earners include the City Manager ($248,114), Deputy City Manager ($255,142), and Fire Chief ($211,279).
+**Ordinances referenced:** none
+**Dollar amounts found:** City Manager (Stephen Williams) total compensation: 248114.55; Deputy City Manager (Brian James) total compensation: 255142.02; Fire Chief (Gregory Rodgers) total compensation: 211279.61; Police Chief (James Lowery Jr.) total compensation: 199926.56; Assistant Fire Chief (John Perry) total compensation: 254277.18
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | Employee Compensation Report FY24 FINAL
+**Source:** https://www.schertz.com/DocumentCenter/View/12917/Employee-Compensation-Report-FY24-FINAL
+**Document type:** financial-report
+**Pages updated:** topics/budget.md, topics/governance.md, topics/public-safety.md
+**Pages created:** none
+**Key facts added:** This is the comprehensive Employee Compensation Report for FY24 (October 1, 2023 - September 30, 2024) for the City of Schertz. The report details compensation for all city employees including salary, overtime, additional earnings, benefits, and total compensation. It covers positions across all city departments including fire, police, EMS, public works, administration, and support services. The report includes detailed breakdowns of regular earnings, overtime, deployment earnings, leave payouts, and additional benefits such as FICA/Medicare, TMRS pension, and healthcare premiums.
+**Ordinances referenced:** none
+**Dollar amounts found:** Highest total compensation - City Manager Stephen Williams: 363269.24; Deputy City Manager Brian James total compensation: 290009.66; Fire Lieutenant Mack Melancon total compensation: 287916.24; Police Chief James Lowery Jr. total compensation: 234401.25; SSLGC General Manager Andrew McBride total compensation: 230755; Arbitration/Settlement payment to Manny Casas: 30363
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | Employee Compensation Report FY24 FINAL (1)
+**Source:** https://www.schertz.com/DocumentCenter/View/12921/Employee-Compensation-Report-FY24-FINAL-1
+**Document type:** financial-report
+**Pages updated:** topics/budget.md, topics/governance.md
+**Pages created:** none
+**Key facts added:** This is the Employee Compensation Report for Schertz, TX for Fiscal Year 2024, covering the period from October 1, 2023 to September 30, 2024. The report provides detailed compensation information for all city employees, including base salaries, overtime, additional earnings, benefits, and total compensation. The highest-compensated employee was City Manager Stephen Williams at $363,269.24 total compensation. The report includes detailed breakdowns of regular earnings, overtime, leave payouts, deployment earnings, and additional benefits including FICA/Medicare, TMRS pension contributions, and healthcare premiums.
+**Ordinances referenced:** none
+**Dollar amounts found:** City Manager Stephen Williams total compensation: 363269.24; Deputy City Manager Brian James total compensation: 290009.66; Fire Lieutenant Mack Melancon total compensation: 287916.24; Fire Chief Gregory Rodgers total compensation: 266647.57; Assistant Police Chief Manny Casas separation payment: 161133.3
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | Employee Compensation Report FY25 FINAL
+**Source:** https://www.schertz.com/DocumentCenter/View/13932/Employee-Compensation-Report-FY25-FINAL
+**Document type:** financial-report
+**Pages updated:** topics/budget.md, topics/governance.md, topics/public-safety.md
+**Pages created:** none
+**Key facts added:** This is Schertz's comprehensive FY2025 Employee Compensation Report detailing salary, overtime, benefits, and total compensation for all city employees. The report includes 9 categories of compensation data: annual salary, leave payout, regular earnings, overtime earnings, additional earnings, deployment earnings, arbitration/settlements, total earnings, and additional benefits. The highest-paid employee is City Manager Stephen Williams at $361,057.44 total compensation, followed by Fire Chief Gregory Rodgers at $314,314.16. The report provides transparency into the cost structure of city personnel across all departments including management, public safety (fire, police, EMS), public works, utilities, parks and recreation, and administrative services.
+**Ordinances referenced:** none
+**Dollar amounts found:** City Manager Stephen Williams total compensation: 361057.44; Fire Chief Gregory Rodgers total compensation: 314314.16; Deputy City Manager Brian James total compensation: 308032.79; Total compensation for top 10 employees: 2617591.69; Fire Lieutenant Patricio Wilson overtime earnings: 51217.6; Fire Lieutenant Patricio Wilson deployment earnings: 65356.52
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | 24-R-09 Investment Policy and Strategy
+**Source:** https://www.schertz.com/DocumentCenter/View/13839/24-R-09-Investment-Policy-and-Strategy
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/governance.md, topics/strategic-plan.md
+**Pages created:** none
+**Key facts added:** Resolution 24-R-09 authorizes the adoption of a revised City of Schertz Investment Policy and Strategy. The resolution repeals all prior investment policy amendments and adopts the comprehensive policy attached as Exhibit A. The Investment Committee met on January 23, 2024 to review and recommend revisions to the policy in compliance with the Texas Public Funds Investment Act (PFIA). The policy establishes investment objectives prioritizing safety, liquidity, diversification, yield, and public trust, and designates the City Manager and Finance Director as Investment Officers.
+**Ordinances referenced:** 24-R-09
+**Dollar amounts found:** Minimum ownership threshold for personal business relationship disclosure - voting stock or shares: 5000; Minimum acquisition threshold for personal business relationship disclosure: 2500
+**Votes recorded:** 1
+
+## [2026-06-04] INGEST | 50-212
+**Source:** https://www.schertz.com/DocumentCenter/View/13593/50-212
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/governance.md
+**Pages created:** none
+**Key facts added:** This is the official notice about 2025 property tax rates for the City of Schertz. The document discloses the no-new-revenue tax rate of $0.5064 per $100 valuation and voter-approval tax rate of $0.5053 per $100. It details unencumbered fund balances totaling approximately $16 million and provides a comprehensive breakdown of debt service obligations for 2025. The total debt service requirement is $11,545,211, with $9,645,211 to be paid from tax revenues after accounting for fund balances and other resources.
+**Ordinances referenced:** none
+**Dollar amounts found:** No-new-revenue tax rate: 0.5064; Voter-approval tax rate: 0.5053; General Fund (M&O) unencumbered balance: 14911342; Debt Service (I&S) unencumbered balance: 1138277; Total debt service requirement: 11545211; Amount paid from unencumbered funds: 1100000; Amount paid from other resources: 800000; Total to be paid from taxes: 9645211; GO 2007 debt payment: 425031; GO 2014 debt payment: 1021425; GO 2015 Refunding debt payment: 37050; GO 2016 debt payment: 374206; CO 2016A debt payment: 97893; CO 2016B debt payment: 102312; GO 2017 debt payment: 264050; CO 2017 debt payment: 270525; GO 2018 Refunding debt payment: 669397; GO 2018 Refunding debt payment (second): 386444; CO 2018 debt payment: 297387; CO 2019 debt payment: 375975; GO 2020 debt payment: 440962; GO 2021 Refunding debt payment: 470800; GO 2022 debt payment: 1379225; CO 2022 debt payment: 333775; CO 2022A debt payment: 612850; CO 2024 debt payment: 2498350; CO 2025 debt payment: 1483354; Paying Agent fees: 4200
+**Votes recorded:** 0
+
+## [2026-06-04] INGEST | 50-876
+**Source:** https://www.schertz.com/DocumentCenter/View/13592/50-876
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/governance.md
+**Pages created:** none
+**Key facts added:** This is a formal Notice of Public Hearing on Tax Increase for the City of Schertz for the 2025 tax year. The proposed tax rate of $0.5350 per $100 valuation exceeds the no-new-revenue rate of $0.5064 but does not exceed the voter-approval rate of $0.5350, meaning no election is required. The proposal represents a 5.6% increase in the tax rate over 2024's rate of $0.4900, and would result in an average homestead tax increase of $100 (6.0%) and a total levy increase of $2.9 million (10.5%). A public hearing is scheduled for September 2, 2025 at 6 PM at City Council Chambers.
+**Ordinances referenced:** none
+**Dollar amounts found:** Proposed tax rate per $100 valuation: 0.535; No-new-revenue tax rate per $100 valuation: 0.5064; Voter-approval tax rate per $100 valuation: 0.535; 2024 adopted tax rate per $100 valuation: 0.49; 2024 average homestead taxable value: 343118; 2025 average homestead taxable value: 331835; 2024 tax on average homestead: 1675.32; 2025 tax on average homestead: 1775.32; 2024 total tax levy on all properties: 27753693; 2025 projected total tax levy on all properties: 30681263
+**Votes recorded:** 1
+
+## [2026-06-04] INGEST | 50-876 (3)
+**Source:** https://www.schertz.com/DocumentCenter/View/13574/50-876-3
+**Document type:** budget
+**Pages updated:** topics/budget.md, topics/governance.md
+**Pages created:** none
+**Key facts added:** This is a Texas Form 50-876 public notice template for a tax rate hearing. The document is a blank state-mandated form used when a proposed tax rate exceeds the no-new-revenue tax rate but does not exceed the voter-approval tax rate. It requires cities to notify taxpayers of proposed property tax increases and scheduled public hearings. The form includes sections for comparing 2024 and 2025 tax rates, average homestead values, and tax calculations. This appears to be an unfilled template rather than a completed notice with actual tax rate data for Schertz.
+**Ordinances referenced:** none
+**Dollar amounts found:** none
+**Votes recorded:** 0

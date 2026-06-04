@@ -208,3 +208,33 @@ last_updated: "2026-06-04"
 - Total debt obligation secured by property taxes is $96,572,010 [SOURCE: Adopted Budget FY2023-24]
 - City contracts with YMCA for Recreation Center, Senior Center, and Aquatics Center programming [SOURCE: Adopted Budget FY2023-24]
 - Emergency Medical Services serves 220-230 square mile service area including multiple municipalities and counties [SOURCE: Adopted Budget FY2023-24]
+
+### From Annual Comprehensive Financial Report Current (2025-03-25)
+
+*From: Annual Comprehensive Financial Report Current (2025-03-25)*
+
+- Schertz received Certificate of Achievement for Excellence in Financial Reporting from GFOA for the 38th consecutive year [SOURCE: Annual Comprehensive Financial Report Current]
+- City maintained AA+ bond rating from Standard and Poor's [SOURCE: Annual Comprehensive Financial Report Current]
+- Population as of 2023 was 43,239, representing continued rapid growth [SOURCE: Annual Comprehensive Financial Report Current]
+- Property tax base expanding at approximately 3% per year; sales taxes growing at 7% annually [SOURCE: Annual Comprehensive Financial Report Current]
+- Unemployment rate for Schertz area was 3.8% as of September 2024, indicating full employment [SOURCE: Annual Comprehensive Financial Report Current]
+- New residential construction permit revenue more than doubled from 2023 to 2024 [SOURCE: Annual Comprehensive Financial Report Current]
+- Commercial permit revenue grew 22.4% in FY2024 [SOURCE: Annual Comprehensive Financial Report Current]
+- City operates under council-manager form of government since November 30, 1972 [SOURCE: Annual Comprehensive Financial Report Current]
+- City provides full range of services including police, fire, EMS, library, streets maintenance, and water/sewer [SOURCE: Annual Comprehensive Financial Report Current]
+- General fund unassigned balance represents 25.61% of total expenditures (excluding capital outlay), exceeding 26% policy [SOURCE: Annual Comprehensive Financial Report Current]
+
+### From 24-R-09 Investment Policy and Strategy (2025-11-14)
+
+*From: 24-R-09 Investment Policy and Strategy (2025-11-14)*
+
+- The City Manager and Finance Director serve as Investment Officers for the City of Schertz [SOURCE: 24-R-09 Investment Policy and Strategy]
+- Investment Officers must receive 10 hours of training within first 12 months of assuming duties and 8 hours every 2 years thereafter [SOURCE: 24-R-09 Investment Policy and Strategy]
+- The Investment Advisory Committee consists of City Manager (Chair), Deputy City Manager, Assistant City Manager, Executive Director of Economic Development, Finance Director, Assistant Finance Director, Budget/Financial Analyst, and up to three City Council representatives [SOURCE: 24-R-09 Investment Policy and Strategy]
+- The Investment Advisory Committee meets at least semiannually to review investment portfolio [SOURCE: 24-R-09 Investment Policy and Strategy]
+- Investment policy must be reviewed annually by City Council in compliance with Texas Public Funds Investment Act [SOURCE: 24-R-09 Investment Policy and Strategy]
+- All investment transactions must use delivery vs. payment method through Federal Reserve System (except investment pool funds and mutual funds) [SOURCE: 24-R-09 Investment Policy and Strategy]
+- Primary investment objectives are safety of principal, liquidity, diversification, yield, and public trust [SOURCE: 24-R-09 Investment Policy and Strategy]
+- Maximum maturity of any security is five years with maximum dollar weighted average maturity of one year or less [SOURCE: 24-R-09 Investment Policy and Strategy]
+- The City maintains one commingled portfolio incorporating all fund types [SOURCE: 24-R-09 Investment Policy and Strategy]
+- Monthly investment reports must be provided to City Council [SOURCE: 24-R-09 Investment Policy and Strategy]

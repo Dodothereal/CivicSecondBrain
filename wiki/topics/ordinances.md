@@ -4,7 +4,7 @@ type: wiki
 category: topic
 sources:
   - City Charter 2024
-last_updated: "2026-06-03"
+last_updated: "2026-06-04"
 ---
 ## Overview
 
@@ -135,3 +135,18 @@ last_updated: "2026-06-03"
 - The charter serves as the fundamental law of the city, establishing its governmental structure and powers [SOURCE: City of Schertz City Charter 2024]
 - Charter amendments require specific procedures and typically voter approval [SOURCE: City of Schertz City Charter 2024]
 - The charter supersedes conflicting ordinances and establishes the legal framework for all city operations [SOURCE: City of Schertz City Charter 2024]
+
+### From Annual Comprehensive Financial Report Current (2025-03-25)
+
+*From: Annual Comprehensive Financial Report Current (2025-03-25)*
+
+- Schertz received Certificate of Achievement for Excellence in Financial Reporting from GFOA for the 38th consecutive year [SOURCE: Annual Comprehensive Financial Report Current]
+- City maintained AA+ bond rating from Standard and Poor's [SOURCE: Annual Comprehensive Financial Report Current]
+- Population as of 2023 was 43,239, representing continued rapid growth [SOURCE: Annual Comprehensive Financial Report Current]
+- Property tax base expanding at approximately 3% per year; sales taxes growing at 7% annually [SOURCE: Annual Comprehensive Financial Report Current]
+- Unemployment rate for Schertz area was 3.8% as of September 2024, indicating full employment [SOURCE: Annual Comprehensive Financial Report Current]
+- New residential construction permit revenue more than doubled from 2023 to 2024 [SOURCE: Annual Comprehensive Financial Report Current]
+- Commercial permit revenue grew 22.4% in FY2024 [SOURCE: Annual Comprehensive Financial Report Current]
+- City operates under council-manager form of government since November 30, 1972 [SOURCE: Annual Comprehensive Financial Report Current]
+- City provides full range of services including police, fire, EMS, library, streets maintenance, and water/sewer [SOURCE: Annual Comprehensive Financial Report Current]
+- General fund unassigned balance represents 25.61% of total expenditures (excluding capital outlay), exceeding 26% policy [SOURCE: Annual Comprehensive Financial Report Current]
