@@ -204,7 +204,7 @@ All wiki pages use YAML frontmatter (`title`, `type`, `category`, `sources`, `la
 | `/admin/login` | Admin login page |
 | `GET /api/health` | Health check with live AI API probe |
 | `POST /api/chat` | Streaming chat endpoint |
-| `POST /api/ingest` | Trigger document ingestion (requires `INGEST_SECRET`) |
+| `POST /api/ingest` | Trigger discovery ingest, or single-document ingest when `url` is provided (requires `INGEST_SECRET`) |
 | `POST /api/lint` | Trigger wiki analysis (requires `INGEST_SECRET`) |
 | `GET /api/wiki/search` | Full-text wiki search (`?q=query&category=topic`) |
 | `GET /api/export/recommendations` | Export recommendations as `.md` or print-PDF HTML |
@@ -226,6 +226,8 @@ openssl rand -base64 24
 
 Without `ADMIN_PASSWORD`, the admin panel is open (dev mode only — always set in production).
 
+The Admin panel supports both scheduled-style ingestion and manual single-document ingestion. Use **Single Document** to paste an `http` or `https` document URL and optionally provide title, type, date, and board metadata. Manual ingestion downloads only that document; it does not run the full discovery scrape.
+
 ### API route auth
 `/api/ingest` and `/api/lint` require an `Authorization: Bearer <secret>` header matching `INGEST_SECRET`. Without `INGEST_SECRET`, requests are accepted in dev mode.
 
@@ -233,6 +235,20 @@ Without `ADMIN_PASSWORD`, the admin panel is open (dev mode only — always set 
 # Generate a secret
 openssl rand -hex 32
 ```
+
+`POST /api/ingest` also accepts a manual single-document payload:
+
+```json
+{
+  "url": "https://example.gov/document.pdf",
+  "title": "Optional title",
+  "type": "public-notice",
+  "board": "city-council",
+  "date": "2026-06-21"
+}
+```
+
+When `url` is present, the route validates the URL, downloads that one document, runs the standard ingest engine, and saves the manifest only after a successful ingest.
 
 ### CI security
 - `ANTHROPIC_API_KEY` is **not** passed to the CI build step (build confirmed clean without it)
