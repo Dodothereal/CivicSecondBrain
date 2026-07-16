@@ -17,7 +17,7 @@ export function ChatInput({
   onChange,
   onSubmit,
   isLoading,
-  placeholder = "Ask anything about Schertz, TX…",
+  placeholder = `Ask anything about ${process.env.NEXT_PUBLIC_CITY_NAME ?? "Schertz"}, ${process.env.NEXT_PUBLIC_CITY_STATE ?? "TX"}…`,
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -62,8 +62,9 @@ export function ChatInput({
           <button
             onClick={onSubmit}
             disabled={isLoading || !value.trim()}
+            aria-label="Send message"
             className={clsx(
-              "flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all",
+              "flex-shrink-0 w-9 h-9 md:w-8 md:h-8 rounded-lg flex items-center justify-center transition-all",
               !isLoading && value.trim()
                 ? "bg-city-navy dark:bg-city-gold text-white dark:text-city-navy hover:bg-city-navy-light dark:hover:opacity-90"
                 : "bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
@@ -77,7 +78,7 @@ export function ChatInput({
           </button>
         </div>
         <p className="text-xs text-gray-400 dark:text-gray-500 mt-1.5 text-center">
-          Answers cite official Schertz city documents · Press Enter to send
+          Answers cite official {process.env.NEXT_PUBLIC_CITY_NAME ?? "Schertz"} city documents · Press Enter to send
         </p>
       </div>
     </div>

@@ -2,11 +2,12 @@
  * POST /api/chat
  *
  * Streaming chat endpoint for council member Q&A.
- * Reads wiki index → selects relevant pages → streams Claude response.
+ * Reads wiki index → selects relevant pages → streams AI response.
+ * Provider is controlled by AI_PROVIDER env var (anthropic | openai | gemini).
  */
 
-// ai v6 dropped StreamingTextResponse — we use the Anthropic SDK stream directly.
-import { claude, MODELS, QUERY_SYSTEM_PROMPT } from "@/lib/claude/client";
+import { QUERY_SYSTEM_PROMPT } from "@/lib/claude/client";
+import { getAIProvider } from "@/lib/ai/provider";
 import {
   readWikiIndex,
   readRelevantPages,
@@ -41,21 +42,21 @@ export async function POST(req: Request) {
         : "\n\n## WIKI KNOWLEDGE BASE\n\nNo wiki pages have been ingested yet. " +
           "Run `npm run ingest:seed` to populate the knowledge base.";
 
-    // ── 3. Stream response ───────────────────────────────────────────────────
+    // ── 3. Stream response via provider-agnostic AI client ───────────────────
 
-    const stream = await claude.messages.stream({
-      model: MODELS.sonnet,
-      max_tokens: 2048,
+    const ai = getAIProvider();
+    const aiStream = ai.stream({
       system: systemPrompt + contextBlock,
+      maxTokens: 2048,
       messages: messages.map((m: { role: string; content: string }) => ({
         role: m.role as "user" | "assistant",
         content: m.content,
       })),
     });
 
-    // ── 4. Log the query (async, non-blocking, non-fatal) ────────────────────
+    // ── 4. Log the query async after stream completes ────────────────────────
 
-    stream.finalMessage().then(() => {
+    const logQuery = () => {
       try {
         const truncatedQ = userMessage.slice(0, 50);
         const logEntry = `## [${today}] QUERY | ${truncatedQ}
@@ -65,25 +66,20 @@ export async function POST(req: Request) {
 **Gap noted:** ${wikiPages.length === 0 ? "No wiki pages ingested — run ingest:seed" : "none"}`;
         appendToLog(logEntry);
       } catch {
-        // Log write failures are non-fatal — don't interrupt the response
+        // Log write failures are non-fatal
       }
-    }).catch(() => {});
+    };
 
-    // Pipe only the text delta content — not the raw Anthropic SSE event objects
+    // Pipe text chunks from the provider into a ReadableStream
     const encoder = new TextEncoder();
     const body = new ReadableStream({
       async start(controller) {
         try {
-          for await (const event of stream) {
-            if (
-              event.type === "content_block_delta" &&
-              event.delta.type === "text_delta"
-            ) {
-              controller.enqueue(encoder.encode(event.delta.text));
-            }
+          for await (const chunk of aiStream) {
+            controller.enqueue(encoder.encode(chunk));
           }
+          logQuery();
         } catch (err) {
-          // Stream error mid-response — emit a readable error message
           controller.enqueue(
             encoder.encode(`\n\n[Error: ${(err as Error).message}]`)
           );
@@ -110,93 +106,141 @@ export async function POST(req: Request) {
   }
 }
 
-// ─── Simple keyword-based page selector ───────────────────────────────────
+// ─── TF-IDF semantic page selector ────────────────────────────────────────
 //
-// At POC scale (<200 wiki pages) we use keyword matching instead of
-// vector search. For production, replace with OpenSearch k-NN.
+// Scores each wiki index entry against the user query using TF-IDF cosine
+// similarity over the entry's path + summary text. This replaces the old
+// hardcoded keyword map and performs meaningfully better on paraphrased or
+// broader queries.
 //
+// Design:
+//  - Tokenise: lowercase, strip punctuation, split on whitespace
+//  - IDF: computed over the full index on each request (index is <500 entries)
+//  - TF: raw term frequency within the entry text
+//  - Score: cosine similarity between query and entry TF-IDF vectors
+//  - Boosts: recent decision pages for temporal queries (unchanged)
+//  - Fallback: if no entry scores above threshold, return top topic pages
+//
+// When the wiki grows to thousands of pages and latency becomes an issue,
+// replace this with OpenSearch k-NN or sqlite-vec + text-embedding-3-small.
+
+const TOP_K = 8;          // max pages returned per query
+const SCORE_THRESHOLD = 0.05; // min cosine sim to include a page
+
+function tokenise(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((t) => t.length > 1);
+}
+
+function buildIdf(documents: string[][]): Map<string, number> {
+  const df = new Map<string, number>();
+  for (const doc of documents) {
+    for (const term of new Set(doc)) {
+      df.set(term, (df.get(term) ?? 0) + 1);
+    }
+  }
+  const N = documents.length;
+  const idf = new Map<string, number>();
+  for (const [term, freq] of df) {
+    idf.set(term, Math.log((N + 1) / (freq + 1)) + 1); // smoothed
+  }
+  return idf;
+}
+
+function tfidfVector(
+  tokens: string[],
+  idf: Map<string, number>
+): Map<string, number> {
+  const tf = new Map<string, number>();
+  for (const t of tokens) tf.set(t, (tf.get(t) ?? 0) + 1);
+  const vec = new Map<string, number>();
+  for (const [t, freq] of tf) {
+    vec.set(t, (freq / tokens.length) * (idf.get(t) ?? 1));
+  }
+  return vec;
+}
+
+function cosine(a: Map<string, number>, b: Map<string, number>): number {
+  let dot = 0;
+  let normA = 0;
+  let normB = 0;
+  for (const [t, v] of a) {
+    dot += v * (b.get(t) ?? 0);
+    normA += v * v;
+  }
+  for (const v of b.values()) normB += v * v;
+  if (normA === 0 || normB === 0) return 0;
+  return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+}
 
 function selectRelevantPages(
   query: string,
   entries: WikiIndexEntry[]
 ): string[] {
+  if (entries.length === 0) return [];
+
   const q = query.toLowerCase();
+  const queryTokens = tokenise(query);
 
-  const TOPIC_KEYWORDS: Record<string, string[]> = {
-    "topics/budget.md": [
-      "budget", "spend", "cost", "finance", "revenue", "expenditure",
-      "debt", "fund", "fiscal", "tax", "dollar", "million", "cip",
-      "capital", "pension", "retirement",
-    ],
-    "topics/ordinances.md": [
-      "ordinance", "code", "law", "regulation", "municode", "pass",
-      "enact", "repeal", "amend", "chapter", "section",
-    ],
-    "topics/infrastructure.md": [
-      "road", "street", "park", "utility", "water", "sewer", "drainage",
-      "facility", "maintenance", "repair", "construction", "cip",
-      "capital improvement",
-    ],
-    "topics/public-safety.md": [
-      "police", "fire", "safety", "court", "crime", "emergency",
-      "ems", "ambulance", "officer", "dispatch",
-    ],
-    "topics/development.md": [
-      "zoning", "zone", "development", "permit", "build", "plat",
-      "subdivision", "edc", "economic", "commercial", "residential",
-      "planning", "variance",
-    ],
-    "topics/governance.md": [
-      "charter", "council", "election", "mayor", "member", "bylaws",
-      "term", "vote", "quorum", "board", "commission",
-    ],
-    "topics/strategic-plan.md": [
-      "strategic", "goal", "plan", "priority", "initiative", "kpi",
-      "progress", "objective", "2024", "2025",
-    ],
-  };
+  // ── Build IDF corpus from all entry texts ─────────────────────────────
+  const entryTexts = entries.map((e) =>
+    tokenise(`${e.path} ${e.summary} ${e.category}`)
+  );
+  const idf = buildIdf([queryTokens, ...entryTexts]);
 
-  const selected = new Set<string>();
+  // ── Score every entry ─────────────────────────────────────────────────
+  const queryVec = tfidfVector(queryTokens, idf);
+  const scored: Array<{ path: string; score: number; entry: WikiIndexEntry }> =
+    entries.map((entry, i) => ({
+      path: entry.path,
+      score: cosine(queryVec, tfidfVector(entryTexts[i], idf)),
+      entry,
+    }));
 
-  // Always include a recent decisions page if asking about meetings
-  if (
+  // ── Boost recent decision pages for temporal queries ──────────────────
+  const isTemporalQuery =
     q.includes("meeting") ||
     q.includes("last") ||
     q.includes("recent") ||
     q.includes("vote") ||
-    q.includes("decided")
-  ) {
-    // Find most recent decisions pages
-    const decisionPages = entries
-      .filter((e) => e.path.startsWith("decisions/"))
-      .sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated))
-      .slice(0, 3);
-    decisionPages.forEach((p) => selected.add(p.path));
-  }
+    q.includes("decided");
 
-  // Keyword matching for topic pages
-  for (const [pagePath, keywords] of Object.entries(TOPIC_KEYWORDS)) {
-    if (keywords.some((kw) => q.includes(kw))) {
-      selected.add(pagePath);
+  if (isTemporalQuery) {
+    const decisionBoost = 0.3;
+    for (const s of scored) {
+      if (s.entry.path.startsWith("decisions/")) {
+        s.score += decisionBoost;
+      }
     }
+    // Sort decisions by recency and apply diminishing boost to older ones
+    const decisionEntries = scored
+      .filter((s) => s.entry.path.startsWith("decisions/"))
+      .sort((a, b) =>
+        b.entry.lastUpdated.localeCompare(a.entry.lastUpdated)
+      );
+    decisionEntries.forEach((s, i) => {
+      s.score += Math.max(0, decisionBoost - i * 0.05);
+    });
   }
 
-  // Include any matching indexed pages (from their summaries)
-  for (const entry of entries) {
-    if (
-      entry.summary.toLowerCase().split(" ").some((word) => q.includes(word))
-    ) {
-      selected.add(entry.path);
-    }
-  }
+  // ── Take top-K above threshold ────────────────────────────────────────
+  const topK = scored
+    .sort((a, b) => b.score - a.score)
+    .filter((s) => s.score >= SCORE_THRESHOLD)
+    .slice(0, TOP_K)
+    .map((s) => s.path);
 
-  // If nothing matched, return all topic pages (broad query)
-  if (selected.size === 0) {
+  // ── Fallback: return top topic pages if nothing scored ────────────────
+  if (topK.length === 0) {
     return entries
       .filter((e) => e.category === "topic")
       .map((e) => e.path)
       .slice(0, 5);
   }
 
-  return Array.from(selected).slice(0, 8); // cap at 8 pages per query
+  return topK;
 }
+

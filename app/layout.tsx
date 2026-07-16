@@ -6,8 +6,8 @@ import { Sidebar } from "./components/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CivicSecondBrain — Schertz, TX",
-  description: "AI-powered city knowledge base for the Schertz City Council",
+  title: `CivicSecondBrain — ${process.env.NEXT_PUBLIC_CITY_NAME ?? "Schertz"}, ${process.env.NEXT_PUBLIC_CITY_STATE ?? "TX"}`,
+  description: `AI-powered city knowledge base for the ${process.env.NEXT_PUBLIC_CITY_NAME ?? "Schertz"} City Council`,
 };
 
 export default function RootLayout({
@@ -30,7 +30,8 @@ export default function RootLayout({
       >
         <div className="flex h-full">
           <Sidebar />
-          <main className="flex-1 overflow-auto">{children}</main>
+          {/* pt-14 on mobile offsets the fixed top header bar; md:pt-0 removes it on desktop */}
+          <main className="flex-1 overflow-auto pt-14 md:pt-0">{children}</main>
         </div>
       </body>
     </html>

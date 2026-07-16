@@ -1,5 +1,110 @@
 # Changelog
 
+## [1.21.0](https://github.com/xozai/CivicSecondBrain/compare/v1.20.0...v1.21.0) (2026-06-22)
+
+
+### Features
+
+* add manual document ingest ([#131](https://github.com/xozai/CivicSecondBrain/issues/131)) ([41a6558](https://github.com/xozai/CivicSecondBrain/commit/41a65581a713897a203c2d33d83de61bbbbc43aa))
+
+## [1.20.0](https://github.com/xozai/CivicSecondBrain/compare/v1.19.0...v1.20.0) (2026-06-06)
+
+
+### Features
+
+* MuniCode ordinance scraper — crawl city code via public content API ([#127](https://github.com/xozai/CivicSecondBrain/issues/127)) ([cfaeec2](https://github.com/xozai/CivicSecondBrain/commit/cfaeec29ed5bfdde19513858a81a65313acd3a14))
+
+## [1.19.0](https://github.com/xozai/CivicSecondBrain/compare/v1.18.0...v1.19.0) (2026-06-06)
+
+
+### Features
+
+* multi-model support — Anthropic, OpenAI, and Gemini via AI_PROVIDER env var ([#125](https://github.com/xozai/CivicSecondBrain/issues/125)) ([98e7467](https://github.com/xozai/CivicSecondBrain/commit/98e7467cf733624bbb483d6514d757b34de0b78e))
+
+## [1.18.0](https://github.com/xozai/CivicSecondBrain/compare/v1.17.0...v1.18.0) (2026-06-06)
+
+
+### Features
+
+* multi-city support — replace Schertz hardcoding with env-var config ([#123](https://github.com/xozai/CivicSecondBrain/issues/123)) ([b53285c](https://github.com/xozai/CivicSecondBrain/commit/b53285c52887e8168edeb80f20e128bdfd6ccabe))
+
+## [1.17.0](https://github.com/xozai/CivicSecondBrain/compare/v1.16.0...v1.17.0) (2026-06-06)
+
+
+### Features
+
+* wiki export admin buttons + tests (closes [#56](https://github.com/xozai/CivicSecondBrain/issues/56)) ([#121](https://github.com/xozai/CivicSecondBrain/issues/121)) ([3467b24](https://github.com/xozai/CivicSecondBrain/commit/3467b2475c5859aa9fe1e5067db040847c50c948))
+
+## [1.16.0](https://github.com/xozai/CivicSecondBrain/compare/v1.15.0...v1.16.0) (2026-06-06)
+
+
+### Features
+
+* responsive UI — mobile sidebar drawer, adaptive grids, touch targets ([#119](https://github.com/xozai/CivicSecondBrain/issues/119)) ([409ed05](https://github.com/xozai/CivicSecondBrain/commit/409ed05c3a2bf6c48f83044845df6714c461ab6c))
+
+## [1.15.0](https://github.com/xozai/CivicSecondBrain/compare/v1.14.0...v1.15.0) (2026-06-06)
+
+
+### Features
+
+* replace keyword page selection with TF-IDF cosine similarity scorer ([#117](https://github.com/xozai/CivicSecondBrain/issues/117)) ([ade357d](https://github.com/xozai/CivicSecondBrain/commit/ade357d4809784711d2222579927510d31c549e9))
+
+## [1.14.0](https://github.com/xozai/CivicSecondBrain/compare/v1.13.1...v1.14.0) (2026-06-06)
+
+
+### Features
+
+* scheduled ingest + lint via Railway cron and GitHub Actions workflow ([#113](https://github.com/xozai/CivicSecondBrain/issues/113)) ([9cd3b66](https://github.com/xozai/CivicSecondBrain/commit/9cd3b66b6e73cfdfd43a991d183462b7d36ccb35))
+
+## [1.13.1](https://github.com/xozai/CivicSecondBrain/compare/v1.13.0...v1.13.1) (2026-06-06)
+
+
+### Bug Fixes
+
+* escape pipe chars in wiki/index.md at write time, decode on read ([#111](https://github.com/xozai/CivicSecondBrain/issues/111)) ([02dd376](https://github.com/xozai/CivicSecondBrain/commit/02dd37621b117a299b7b08f90ecfb93ab62a205a))
+
+## [1.13.0](https://github.com/xozai/CivicSecondBrain/compare/v1.12.0...v1.13.0) (2026-06-06)
+
+
+### Features
+
+* admin panel authentication via ADMIN_PASSWORD + signed session cookie ([#109](https://github.com/xozai/CivicSecondBrain/issues/109)) ([c0b32bc](https://github.com/xozai/CivicSecondBrain/commit/c0b32bcf7edf64ae15659bbcb0725747e2c6bc0a))
+
+## [1.12.0](https://github.com/xozai/CivicSecondBrain/compare/v1.11.4...v1.12.0) (2026-06-06)
+
+
+### Features
+
+* add DOCX and XLSX parsing with mammoth and SheetJS ([#73](https://github.com/xozai/CivicSecondBrain/issues/73)) ([6fe36ae](https://github.com/xozai/CivicSecondBrain/commit/6fe36ae7f333bb0145b80e1efdd6cfcf6615a7c2))
+
+## [1.11.4](https://github.com/xozai/CivicSecondBrain/compare/v1.11.3...v1.11.4) (2026-06-06)
+
+
+### Bug Fixes
+
+* race condition — save manifest once after loop not per-document ([#76](https://github.com/xozai/CivicSecondBrain/issues/76)) ([b6c00f1](https://github.com/xozai/CivicSecondBrain/commit/b6c00f16c491a353a0ac1ddd11d2a0906dba8775))
+
+## [1.11.3](https://github.com/xozai/CivicSecondBrain/compare/v1.11.2...v1.11.3) (2026-06-06)
+
+
+### Bug Fixes
+
+* **ingest:** move checksum dedup after download so localPath is available ([#75](https://github.com/xozai/CivicSecondBrain/issues/75)) ([e1b3896](https://github.com/xozai/CivicSecondBrain/commit/e1b38969e545e60ecbe76e8cdf3c7dd6eb91e17a))
+
+## [1.11.2](https://github.com/xozai/CivicSecondBrain/compare/v1.11.1...v1.11.2) (2026-06-06)
+
+
+### Bug Fixes
+
+* populate assistant bubble with error text when stream body is null ([#77](https://github.com/xozai/CivicSecondBrain/issues/77)) ([f803a8e](https://github.com/xozai/CivicSecondBrain/commit/f803a8e8ffb4e2cdd82a3754ccb56ff61ba549bf))
+
+## [1.11.1](https://github.com/xozai/CivicSecondBrain/compare/v1.11.0...v1.11.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **deploy:** move tsx to dependencies, fix duplicate header JSX ([#102](https://github.com/xozai/CivicSecondBrain/issues/102)) ([a19d324](https://github.com/xozai/CivicSecondBrain/commit/a19d3246c38524d5845cd6e135f7385272ba5ef8))
+
 ## [1.11.0](https://github.com/xozai/CivicSecondBrain/compare/v1.10.1...v1.11.0) (2026-06-05)
 
 

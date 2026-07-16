@@ -18,8 +18,19 @@ import path from "path";
 import crypto from "crypto";
 import type { CivicDocument, DocumentType, BoardName } from "@/types";
 import { discoverLaserficheDocs } from "./laserfiche-scraper";
+import { discoverMunicodeDocs } from "./municode-scraper";
+import { docId } from "@/lib/manifest";
 
-const BASE_URL = "https://www.schertz.com";
+// Base URL for the city's government website.
+// Override via GOV_BASE_URL env var for non-Schertz deployments.
+// Falls back to the SCHERTZ_GOV_URL env var for backward compatibility,
+// then to the Schertz default.
+const BASE_URL =
+  process.env.GOV_BASE_URL ??
+  process.env.SCHERTZ_GOV_URL?.replace(/\/\d+\/.*$/, "") ?? // strip path
+  "https://www.schertz.com";
+
+const CITY_NAME = process.env.CITY_NAME ?? process.env.NEXT_PUBLIC_CITY_NAME ?? "Schertz";
 const RAW_SOURCES_PATH = process.env.RAW_SOURCES_PATH ?? "./raw-sources";
 const SKIP_DOC_IDS = new Set(["8101"]); // City Building Map — not a civic document
 
@@ -38,14 +49,15 @@ export interface DiscoveredDocument {
 // ─── Main scraper entry point ──────────────────────────────────────────────
 
 export async function discoverDocuments(): Promise<DiscoveredDocument[]> {
-  console.log("🔍 Scraping Schertz government documents (parallel)...");
+  console.log(`🔍 Scraping ${CITY_NAME} government documents (parallel)...`);
 
-  // All four scrapers are independent — run them concurrently
-  const [dcResult, financeResult, noticesResult, lfResult] = await Promise.allSettled([
+  // All scrapers are independent — run them concurrently
+  const [dcResult, financeResult, noticesResult, lfResult, municodeResult] = await Promise.allSettled([
     scrapeDocumentCenter(),
     scrapeFinanceSubpages(),
     scrapePublicNotices(),
     discoverLaserficheDocs(),
+    discoverMunicodeDocs(),
   ]);
 
   const discovered: DiscoveredDocument[] = [];
@@ -80,6 +92,15 @@ export async function discoverDocuments(): Promise<DiscoveredDocument[]> {
   } else {
     console.error(`  ✗ Laserfiche FAILED: ${lfResult.reason?.message}`);
     console.error("    This accounts for ~6,800 missing documents. Check Railway outbound network access.");
+  }
+
+  if (municodeResult.status === "fulfilled") {
+    discovered.push(...municodeResult.value);
+    if (municodeResult.value.length > 0) {
+      console.log(`  ✓ MuniCode: ${municodeResult.value.length} ordinance sections found`);
+    }
+  } else {
+    console.warn(`  ⚠ MuniCode: ${municodeResult.reason?.message}`);
   }
 
   console.log(`\n📋 Total documents discovered: ${discovered.length}`);
@@ -281,7 +302,7 @@ export async function downloadDocument(doc: DiscoveredDocument): Promise<string 
     fs.mkdirSync(dir, { recursive: true });
 
     const HEADERS = {
-      "User-Agent": "CivicSecondBrain/1.0 (City Council Research Tool; contact@schertz.com)",
+      "User-Agent": `CivicSecondBrain/1.0 (City Council Research Tool; ${BASE_URL})`,
       "Accept": "application/pdf,*/*",
     };
 
@@ -311,9 +332,22 @@ export async function downloadDocument(doc: DiscoveredDocument): Promise<string 
     }
 
     const contentType: string = (response.headers["content-type"] as string) ?? "";
-    const ext = contentTypeToExt(contentType) ?? getExtension(doc.url);
-    const filename = sanitizeFilename(doc.title) + ext;
+    // Derive extension from Content-Type first, then fall back to URL pathname.
+    // Use URL-parsed pathname so that query strings and fragments are stripped
+    // before path.extname, preventing crafted URLs from injecting path separators.
+    const urlExt = path.extname(new URL(doc.url).pathname);
+    const ext = contentTypeToExt(contentType) ?? (urlExt || ".html");
+    // Use the URL-hash-based docId as the filename so that crafted titles or
+    // URL paths containing "../" cannot escape the destination directory.
+    const filename = docId(doc.url) + ext;
     const localPath = path.join(dir, filename);
+
+    // Path-traversal guard: assert the resolved path stays inside RAW_SOURCES_PATH.
+    const resolvedPath = path.resolve(localPath);
+    if (!resolvedPath.startsWith(path.resolve(RAW_SOURCES_PATH) + path.sep) &&
+        resolvedPath !== path.resolve(RAW_SOURCES_PATH)) {
+      throw new Error(`Path traversal attempt blocked: ${resolvedPath}`);
+    }
 
     // Capture server's change signal for manifest (used to detect updates on future runs)
     const serverModified =
