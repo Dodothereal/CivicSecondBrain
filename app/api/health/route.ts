@@ -99,7 +99,7 @@ export async function GET() {
     checks.status = "degraded";
   }
 
-  // Always return 200 so Railway's liveness probe passes — the app is running.
-  // Use checks.status / checks.errors to detect degraded state in the dashboard.
-  return Response.json(checks, { status: 200 });
+  return Response.json(checks, {
+    status: checks.status === "ok" ? 200 : 503,
+  });
 }
