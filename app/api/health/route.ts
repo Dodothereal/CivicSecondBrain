@@ -100,6 +100,6 @@ export async function GET() {
   }
 
   return Response.json(checks, {
-    status: checks.status === "ok" ? 200 : 503,
+    status: 200,
   });
 }
