@@ -641,7 +641,7 @@ Export buttons are available in the Admin panel under the **Export** card. The r
 
 GitHub Actions runs on every push to `main` and every PR:
 - `npm run lint` — ESLint (flat config, eslint-config-next presets)
-- `npm test` — Vitest unit test suite
+- `npm test` — runs the full Vitest suite
 - `npm run build` — validates the Next.js production build
 - Secret guard — fails if `NEXT_PUBLIC_ANTHROPIC` appears anywhere in source
 - `npm run test:e2e` (separate **E2E** workflow) — Playwright smoke tests against a real production build: `/`, `/wiki`, `/dashboard`, the `/admin` auth-gate redirect, and `GET /api/health/live`. No AI calls — runs entirely without `ANTHROPIC_API_KEY`.
