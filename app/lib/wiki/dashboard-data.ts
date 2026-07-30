@@ -130,11 +130,24 @@ function parseRecentLog(): Array<{
     entries.push({
       date: match[1],
       operation: match[2],
-      label: match[3],
+      label: humanizeLogLabel(match[2], match[3]),
     });
   }
 
   return entries.reverse().slice(0, 15);
+}
+
+/**
+ * Older log entries used internal flags as labels (LINT runs were logged as
+ * "LINT | full"), which rendered in the activity feed as the bare word
+ * "full" — indistinguishable from broken output. Translate legacy labels;
+ * new entries are written as sentences at the source.
+ */
+function humanizeLogLabel(operation: string, label: string): string {
+  if (operation === "LINT" && label.trim() === "full") {
+    return "Full wiki analysis";
+  }
+  return label;
 }
 
 // ─── Compute wiki stats ────────────────────────────────────────────────────

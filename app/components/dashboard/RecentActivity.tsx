@@ -1,4 +1,4 @@
-import { FileText, RefreshCw, Zap, Search } from "lucide-react";
+import { FileText, RefreshCw, Zap, Search, Upload, ClipboardList } from "lucide-react";
 
 interface LogEntry {
   date: string;
@@ -17,6 +17,8 @@ const OP_ICONS: Record<string, React.ElementType> = {
   QUERY: Search,
   BOOTSTRAP: RefreshCw,
   RECOMMEND: Zap,
+  UPLOAD: Upload,
+  BRIEFING: ClipboardList,
 };
 
 const OP_COLORS: Record<string, string> = {
@@ -26,6 +28,8 @@ const OP_COLORS: Record<string, string> = {
   QUERY: "bg-gray-100 text-gray-600",
   BOOTSTRAP: "bg-green-100 text-green-700",
   RECOMMEND: "bg-amber-100 text-amber-700",
+  UPLOAD: "bg-teal-100 text-teal-700",
+  BRIEFING: "bg-rose-100 text-rose-700",
 };
 
 export function RecentActivity({ entries }: RecentActivityProps) {
