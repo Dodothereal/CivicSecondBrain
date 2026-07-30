@@ -221,7 +221,9 @@ describe("POST /api/lint — JSON extraction and recommendation writing", () => 
     await POST(makeRequest());
 
     const log = fs.readFileSync(path.join(tmpWiki, "log.md"), "utf-8");
-    expect(log).toContain("LINT | full");
+    // Sentence-style label: it renders verbatim in the dashboard's Recent
+    // Activity feed (the old "LINT | full" read as broken output there)
+    expect(log).toMatch(/LINT \| Analyzed \d+ pages — 2 recommendations generated/);
     expect(log).toContain("1 high");
     expect(log).toContain("1 medium");
   });

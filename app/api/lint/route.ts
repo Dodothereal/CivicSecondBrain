@@ -111,8 +111,9 @@ Return ONLY valid JSON.`,
       );
     }
 
-    // 5. Log
-    appendToLog(`## [${today}] LINT | full
+    // 5. Log — the heading label renders verbatim in the dashboard's
+    // Recent Activity feed, so it must read as a sentence, not a flag
+    appendToLog(`## [${today}] LINT | Analyzed ${pages.length} pages — ${recs.length} recommendation${recs.length === 1 ? "" : "s"} generated
 **Pages analyzed:** ${pages.length}
 **Issues found:** ${recs.filter((r) => r.severity === "high").length} high | ${recs.filter((r) => r.severity === "medium").length} medium | ${recs.filter((r) => r.severity === "low").length} low
 **Stale pages:** ${(result.stalePages ?? []).join(", ") || "none"}
