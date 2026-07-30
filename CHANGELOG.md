@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.9](https://github.com/xozai/CivicSecondBrain/compare/v1.31.8...v1.31.9) (2026-07-30)
+
+
+### Bug Fixes
+
+* Recent Activity no longer renders LINT runs as the bare word "full" ([#267](https://github.com/xozai/CivicSecondBrain/issues/267)) ([0736538](https://github.com/xozai/CivicSecondBrain/commit/0736538361db8aac0441a579eea7d918670e62f3))
+
 ## [1.31.8](https://github.com/xozai/CivicSecondBrain/compare/v1.31.7...v1.31.8) (2026-07-22)
 
 
